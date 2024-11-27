@@ -5,31 +5,33 @@ function App() {
     const [modalVisible, setModalVisible] = useState(false);
     const [receiptText, setReceiptText] = useState('');
 
+    
     const askForAmount = (zooName) => {
         let amount = prompt(`Enter the amount you wish to donate to ${zooName}:`, "");
 
         if (amount !== null && !isNaN(amount) && amount > 0) {
-            showReceipt(zooName, amount);
+            showReceipt(zooName, amount);  
         } else {
             alert("Please enter a valid donation amount.");
         }
     };
 
-    // Modified showReceipt function using React state
+    
     const showReceipt = (zooName, amount) => {
         const receipt = `You have successfully donated ₹${amount} to ${zooName}. 
         Your support helps in conserving endangered species.`;
-        setReceiptText(receipt);
-        setModalVisible(true); // Set modal visibility to true
+        setReceiptText(receipt); 
+        setModalVisible(true);   
     };
 
+    
     const closeModal = () => {
-        setModalVisible(false);
+        setModalVisible(false);  
     };
 
     return (
         <div className="App">
-            {/* Header */}
+            {/* Header Section */}
             <header>
                 <h1>Animal Protection</h1>
                 <p>Donate to save endangered species in Indian Zoos</p>
@@ -108,48 +110,13 @@ function App() {
                 </div>
             </section>
 
-            {/* Our Mission Section */}
-            <section id="mission">
-                <h2>Our Mission</h2>
-                <p style={{ fontSize: "18px", maxWidth: "800px", margin: "20px auto", lineHeight: "1.6" }}>
-                    Our mission is to protect India’s wildlife heritage by supporting zoos in their efforts to conserve endangered species. By connecting animal lovers with conservation initiatives, we aim to create a positive impact that ensures a brighter future for these majestic creatures.
-                </p>
-            </section>
-
-            {/* What People Say About Us Section */}
-            <section id="testimonials">
-                <h2>What People Say About Us</h2>
-                <div className="zoos-container">
-                    <div className="zoos-list">
-                        <h3>Arjun Mehta</h3>
-                        <p>"I love how transparent and safe this platform is. Knowing my donations directly help zoos gives me immense satisfaction."</p>
-                    </div>
-                    <div className="zoos-list">
-                        <h3>Priya Sharma</h3>
-                        <p>"This website is a great initiative. It's amazing to see the impact our contributions can make for endangered animals."</p>
-                    </div>
-                    <div className="zoos-list">
-                        <h3>Ravi Kumar</h3>
-                        <p>"The process was seamless, and I was impressed by how well-organized everything is. Highly recommend supporting this cause!"</p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Get Inspired to Make a Difference Section */}
-            <section id="inspiration">
-                <h2>Get Inspired to Make a Difference</h2>
-                <p style={{ fontSize: "18px", maxWidth: "800px", margin: "20px auto", lineHeight: "1.6" }}>
-                    Did you know that India is home to some of the most diverse and endangered wildlife species in the world? Your contribution today can help save the Bengal Tigers, Indian Rhinos, Asiatic Lions, and many more animals that are on the brink of extinction. Together, we can create a lasting legacy for generations to come.
-                </p>
-            </section>
-
             {/* Modal Overlay */}
             {modalVisible && (
                 <>
                     <div className="overlay" id="overlay"></div>
                     <div className="modal" id="modal">
                         <h3>Thank You for Donating!</h3>
-                        <p id="receipt">{receiptText}</p>
+                        <p id="receipt">{receiptText}</p> {/* Display receipt message */}
                         <button className="close-btn" onClick={closeModal}>Close</button>
                     </div>
                 </>
@@ -199,4 +166,5 @@ function App() {
 }
 
 export default App;
+
 
