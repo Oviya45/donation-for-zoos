@@ -15,11 +15,12 @@ function App() {
         }
     };
 
+    // Modified showReceipt function using React state
     const showReceipt = (zooName, amount) => {
         const receipt = `You have successfully donated ₹${amount} to ${zooName}. 
         Your support helps in conserving endangered species.`;
         setReceiptText(receipt);
-        setModalVisible(true);
+        setModalVisible(true); // Set modal visibility to true
     };
 
     const closeModal = () => {
@@ -157,7 +158,7 @@ function App() {
             {/* About Section */}
             <section id="about">
                 <h2>About Us</h2>
-                <p>Animal Protection is a non-profit organization focused on supporting zoos in India to conserve endangered species and promote wildlife protection initiatives.Animal Protection is a dedicated non-profit organization focused on safeguarding India’s endangered wildlife. We aim to support zoos, wildlife sanctuaries, and conservation programs to protect species that are on the brink of extinction, such as the Bengal Tiger, Asiatic Lion, Indian Rhino, and many more. Our mission is to bridge the gap between wildlife conservation and the public, encouraging people to actively engage in preserving biodiversity. Through transparent fundraising and strategic partnerships, we help zoos improve animal care, enhance breeding programs, and restore natural habitats. Our approach is holistic, combining education, research, and community engagement to create long-lasting, positive impacts. Since our inception, we’ve raised millions in donations, funded numerous animal welfare projects, and educated thousands about the importance of biodiversity. We believe that by empowering communities and spreading awareness, we can inspire collective action to protect our planet’s wildlife heritage. Together, with the help of passionate supporters and dedicated partners, we are striving to make a measurable difference and ensure the survival of endangered species for generations to come</p>
+                <p>Animal Protection is a non-profit organization focused on supporting zoos in India to conserve endangered species and promote wildlife protection initiatives.</p>
             </section>
 
             {/* Contact Section */}
@@ -198,3 +199,4 @@ function App() {
 }
 
 export default App;
+
