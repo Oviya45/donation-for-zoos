@@ -1,37 +1,35 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
 function App() {
     const [modalVisible, setModalVisible] = useState(false);
     const [receiptText, setReceiptText] = useState('');
 
-    // Function to ask for donation amount
     const askForAmount = (zooName) => {
         let amount = prompt(`Enter the amount you wish to donate to ${zooName}:`, "");
 
         if (amount !== null && !isNaN(amount) && amount > 0) {
-            showReceipt(zooName, amount);  // Call showReceipt if valid amount
+            showReceipt(zooName, amount);
         } else {
             alert("Please enter a valid donation amount.");
         }
     };
 
-    // Function to show the receipt message and make modal visible
     const showReceipt = (zooName, amount) => {
         const receipt = `You have successfully donated ₹${amount} to ${zooName}. 
         Your support helps in conserving endangered species.`;
-        setReceiptText(receipt); // Update the receipt text
-        setModalVisible(true);   // Show the modal
+        setReceiptText(receipt);
+        setModalVisible(true);
     };
 
-    // Function to close the modal
     const closeModal = () => {
-        setModalVisible(false);  // Close the modal
+        setModalVisible(false);
     };
 
     return (
         <div className="App">
-            {/* Header Section */}
+            {/* Header */}
             <header>
                 <h1>Animal Protection</h1>
                 <p>Donate to save endangered species in Indian Zoos</p>
@@ -110,13 +108,48 @@ function App() {
                 </div>
             </section>
 
+            {/* Our Mission Section */}
+            <section id="mission">
+                <h2>Our Mission</h2>
+                <p style={{ fontSize: "18px", maxWidth: "800px", margin: "20px auto", lineHeight: "1.6" }}>
+                    Our mission is to protect India’s wildlife heritage by supporting zoos in their efforts to conserve endangered species. By connecting animal lovers with conservation initiatives, we aim to create a positive impact that ensures a brighter future for these majestic creatures.
+                </p>
+            </section>
+
+            {/* What People Say About Us Section */}
+            <section id="testimonials">
+                <h2>What People Say About Us</h2>
+                <div className="zoos-container">
+                    <div className="zoos-list">
+                        <h3>Arjun Mehta</h3>
+                        <p>"I love how transparent and safe this platform is. Knowing my donations directly help zoos gives me immense satisfaction."</p>
+                    </div>
+                    <div className="zoos-list">
+                        <h3>Priya Sharma</h3>
+                        <p>"This website is a great initiative. It's amazing to see the impact our contributions can make for endangered animals."</p>
+                    </div>
+                    <div className="zoos-list">
+                        <h3>Ravi Kumar</h3>
+                        <p>"The process was seamless, and I was impressed by how well-organized everything is. Highly recommend supporting this cause!"</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Get Inspired to Make a Difference Section */}
+            <section id="inspiration">
+                <h2>Get Inspired to Make a Difference</h2>
+                <p style={{ fontSize: "18px", maxWidth: "800px", margin: "20px auto", lineHeight: "1.6" }}>
+                    Did you know that India is home to some of the most diverse and endangered wildlife species in the world? Your contribution today can help save the Bengal Tigers, Indian Rhinos, Asiatic Lions, and many more animals that are on the brink of extinction. Together, we can create a lasting legacy for generations to come.
+                </p>
+            </section>
+
             {/* Modal Overlay */}
             {modalVisible && (
                 <>
                     <div className="overlay" id="overlay"></div>
                     <div className="modal" id="modal">
                         <h3>Thank You for Donating!</h3>
-                        <p id="receipt">{receiptText}</p> {/* Display receipt message */}
+                        <p id="receipt">{receiptText}</p>
                         <button className="close-btn" onClick={closeModal}>Close</button>
                     </div>
                 </>
@@ -125,7 +158,7 @@ function App() {
             {/* About Section */}
             <section id="about">
                 <h2>About Us</h2>
-                <p>Animal Protection is a non-profit organization focused on supporting zoos in India to conserve endangered species and promote wildlife protection initiatives.</p>
+                <p>Animal Protection is a non-profit organization focused on supporting zoos in India to conserve endangered species and promote wildlife protection initiatives.Animal Protection is a dedicated non-profit organization focused on safeguarding India’s endangered wildlife. We aim to support zoos, wildlife sanctuaries, and conservation programs to protect species that are on the brink of extinction, such as the Bengal Tiger, Asiatic Lion, Indian Rhino, and many more. Our mission is to bridge the gap between wildlife conservation and the public, encouraging people to actively engage in preserving biodiversity. Through transparent fundraising and strategic partnerships, we help zoos improve animal care, enhance breeding programs, and restore natural habitats. Our approach is holistic, combining education, research, and community engagement to create long-lasting, positive impacts. Since our inception, we’ve raised millions in donations, funded numerous animal welfare projects, and educated thousands about the importance of biodiversity. We believe that by empowering communities and spreading awareness, we can inspire collective action to protect our planet’s wildlife heritage. Together, with the help of passionate supporters and dedicated partners, we are striving to make a measurable difference and ensure the survival of endangered species for generations to come</p>
             </section>
 
             {/* Contact Section */}
