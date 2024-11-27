@@ -5,29 +5,33 @@ function App() {
     const [modalVisible, setModalVisible] = useState(false);
     const [receiptText, setReceiptText] = useState('');
 
+    // Function to ask for donation amount
     const askForAmount = (zooName) => {
         let amount = prompt(`Enter the amount you wish to donate to ${zooName}:`, "");
 
         if (amount !== null && !isNaN(amount) && amount > 0) {
-            showReceipt(zooName, amount); // Show the receipt with the thank you message
+            showReceipt(zooName, amount);  // Call showReceipt if valid amount
         } else {
             alert("Please enter a valid donation amount.");
         }
     };
 
+    // Function to show the receipt message and make modal visible
     const showReceipt = (zooName, amount) => {
-        const receipt = `You have successfully donated ₹${amount} to ${zooName}. \nYour support helps in conserving endangered species.`;
-        setReceiptText(receipt);
-        setModalVisible(true); // Display the modal with the receipt message
+        const receipt = `You have successfully donated ₹${amount} to ${zooName}. 
+        Your support helps in conserving endangered species.`;
+        setReceiptText(receipt); // Update the receipt text
+        setModalVisible(true);   // Show the modal
     };
 
+    // Function to close the modal
     const closeModal = () => {
-        setModalVisible(false);
+        setModalVisible(false);  // Close the modal
     };
 
     return (
         <div className="App">
-            {/* Header */}
+            {/* Header Section */}
             <header>
                 <h1>Animal Protection</h1>
                 <p>Donate to save endangered species in Indian Zoos</p>
@@ -106,48 +110,13 @@ function App() {
                 </div>
             </section>
 
-            {/* Our Mission Section */}
-            <section id="mission">
-                <h2>Our Mission</h2>
-                <p style={{ fontSize: "18px", maxWidth: "800px", margin: "20px auto", lineHeight: "1.6" }}>
-                    Our mission is to protect India’s wildlife heritage by supporting zoos in their efforts to conserve endangered species. By connecting animal lovers with conservation initiatives, we aim to create a positive impact that ensures a brighter future for these majestic creatures.
-                </p>
-            </section>
-
-            {/* What People Say About Us Section */}
-            <section id="testimonials">
-                <h2>What People Say About Us</h2>
-                <div className="zoos-container">
-                    <div className="zoos-list">
-                        <h3>Arjun Mehta</h3>
-                        <p>"I love how transparent and safe this platform is. Knowing my donations directly help zoos gives me immense satisfaction."</p>
-                    </div>
-                    <div className="zoos-list">
-                        <h3>Priya Sharma</h3>
-                        <p>"This website is a great initiative. It's amazing to see the impact our contributions can make for endangered animals."</p>
-                    </div>
-                    <div className="zoos-list">
-                        <h3>Ravi Kumar</h3>
-                        <p>"The process was seamless, and I was impressed by how well-organized everything is. Highly recommend supporting this cause!"</p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Get Inspired to Make a Difference Section */}
-            <section id="inspiration">
-                <h2>Get Inspired to Make a Difference</h2>
-                <p style={{ fontSize: "18px", maxWidth: "800px", margin: "20px auto", lineHeight: "1.6" }}>
-                    Did you know that India is home to some of the most diverse and endangered wildlife species in the world? Your contribution today can help save the Bengal Tigers, Indian Rhinos, Asiatic Lions, and many more animals that are on the brink of extinction. Together, we can create a lasting legacy for generations to come.
-                </p>
-            </section>
-
             {/* Modal Overlay */}
             {modalVisible && (
                 <>
                     <div className="overlay" id="overlay"></div>
                     <div className="modal" id="modal">
                         <h3>Thank You for Donating!</h3>
-                        <p id="receipt">{receiptText}</p>
+                        <p id="receipt">{receiptText}</p> {/* Display receipt message */}
                         <button className="close-btn" onClick={closeModal}>Close</button>
                     </div>
                 </>
@@ -156,26 +125,42 @@ function App() {
             {/* About Section */}
             <section id="about">
                 <h2>About Us</h2>
-                <p>Animal Protection is a non-profit organization focused on supporting zoos in India to conserve endangered species and promote wildlife protection initiatives.Animal Protection is a dedicated non-profit organization focused on safeguarding India’s endangered wildlife. We aim to support zoos, wildlife sanctuaries, and conservation programs to protect species that are on the brink of extinction, such as the Bengal Tiger, Asiatic Lion, Indian Rhino, and many more. Our mission is to bridge the gap between wildlife conservation and the public, encouraging people to actively engage in preserving biodiversity. Through transparent fundraising and strategic partnerships, we help zoos improve animal care, enhance breeding programs, and restore natural habitats. Our approach is holistic, combining education, research, and community engagement to create long-lasting, positive impacts. Since our inception, we’ve raised millions in donations, funded numerous animal welfare projects, and educated thousands about the importance of biodiversity. We believe that by empowering communities and spreading awareness, we can inspire collective action to protect our planet’s wildlife heritage. Together, with the help of passionate supporters and dedicated partners, we are striving to make a real difference in the fight against species extinction.</p>
+                <p>Animal Protection is a non-profit organization focused on supporting zoos in India to conserve endangered species and promote wildlife protection initiatives.</p>
             </section>
 
             {/* Contact Section */}
             <section id="contact">
                 <h2>Contact Us</h2>
-                <form action="#">
-                    <label htmlFor="name">Your Name:</label>
-                    <input type="text" id="name" name="name" required />
-                    <label htmlFor="email">Your Email:</label>
-                    <input type="email" id="email" name="email" required />
-                    <label htmlFor="message">Your Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-                    <button type="submit">Submit</button>
-                </form>
+                <p>We would love to hear from you! Whether you have questions, feedback, or just want to learn more about our mission, feel free to reach out.</p>
+
+                <div>
+                    <h3>Send Us a Message</h3>
+                    <form action="submit_form.php" method="POST">
+                        <label for="name">Your Name:</label><br />
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required /><br /><br />
+
+                        <label for="email">Your Email:</label><br />
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required /><br /><br />
+
+                        <label for="message">Your Message:</label><br />
+                        <textarea id="message" name="message" placeholder="Write your message" required></textarea><br /><br />
+
+                        <button type="submit" className="send-btn">Send Message</button>
+                    </form>
+                </div>
             </section>
 
-            <footer>
-                <p>Animal Protection | 2024</p>
-            </footer>
+            {/* Social Media Section */}
+            <div className="social-media">
+                <h3>Follow Us</h3>
+                <p>Stay connected with us through our social media channels:</p>
+                <ul>
+                    <li><a href="https://www.facebook.com/animalprotection" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/animalprotection" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.twitter.com/animalprotection" target="_blank">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com/company/animalprotection" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
         </div>
     );
 }
